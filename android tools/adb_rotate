@@ -1,22 +1,22 @@
 #!/bin/sh
 
-echo "a - auto"
-echo "p - portrait"
-echo "l - landscape"
+echo "1 - Landscape"
+echo "2 - Portrait"
+echo "3 - Auto"
 read ori
 
-if [ $ori = "a" ]
+if [ $ori = "3" ]
 then 
     echo "Turning on automatic rotation"
     adb shell content insert --uri content://settings/system --bind name:s:accelerometer_rotation --bind value:i:1
-elif [ $ori = "l" ]
+elif [ $ori = "1" ]
 then 
     echo "Turning off automatic rotation"
     adb shell content insert --uri content://settings/system --bind name:s:accelerometer_rotation --bind value:i:0
     echo "Rotating screen landscape"
     adb shell content insert --uri content://settings/system --bind name:s:user_rotation --bind value:i:1
 
-elif [ $ori = "p" ]
+elif [ $ori = "2" ]
 then
     echo "Turning off automatic rotation"
     adb shell content insert --uri content://settings/system --bind name:s:accelerometer_rotation --bind value:i:0
